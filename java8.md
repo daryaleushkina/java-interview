@@ -143,7 +143,18 @@ public static void main(String[] args) {
     Printable printer = s -> System.out.println(s);
     printer.print("Hello, world");
 }
-```
+```Например, предположим, что у вас есть коллекция объектов Person, и вы хотите найти всех людей младше 18 лет. Вы можете использовать Predicate для определения условия:
+
+java
+Copy code
+Predicate<Person> isUnderage = person -> person.getAge() < 18;
+Затем вы можете использовать этот предикат для фильтрации списка людей:
+
+java
+Copy code
+List<Person> underagePeople = people.stream()
+        .filter(isUnderage)
+        .collect(Collectors.toList());
 
 + _Блочные лямбда-выражения_ обрамляются фигурными скобками. В блочных лямбда-выражениях можно использовать внутренние вложенные блоки, циклы, конструкции `if`, `switch`, создавать переменные и т.д. Если блочное лямбда-выражение должно возвращать значение, то явным образом применяется оператор `return`:
 
@@ -301,6 +312,19 @@ __`Predicate<T>` (предикат)__ - интерфейс, с помощью к
 Predicate<String> predicate = (s) -> s.length() > 0;
 predicate.test("foo"); // true
 predicate.negate().test("foo"); // false
+```
+
+Например, предположим, что у вас есть коллекция объектов Person, и вы хотите найти всех людей младше 18 лет. Вы можете использовать Predicate для определения условия:
+
+```java
+Predicate<Person> isUnderage = person -> person.getAge() < 18;
+```
+Затем вы можете использовать этот предикат для фильтрации списка людей:
+
+```java
+List<Person> underagePeople = people.stream()
+.filter(isUnderage)
+.collect(Collectors.toList());
 ```
 
 + `DoublePredicate` - предикат, получающий на вход `Double`;
